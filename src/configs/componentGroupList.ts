@@ -31,8 +31,8 @@ export default [
       },
       {
         icon: Files,
-        text: 'test',
-        type: 'test',
+        text: 'component',
+        type: 'component',
       },
     ],
   },

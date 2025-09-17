@@ -1,6 +1,5 @@
 import { defineConfig } from '@tmagic/cli';
-
-import test from './widget/test.vue';
+import path from 'path'; // 引入 path 模块处理路径
 
 export default defineConfig({
   packages: [
@@ -10,7 +9,7 @@ export default defineConfig({
       'iterator-container': '@tmagic/vue-iterator-container',
       'page-fragment': '@tmagic/vue-page-fragment',
       'page-fragment-container': '@tmagic/vue-page-fragment-container',
-      test: './widget/test.vue',
+      component: path.resolve(__dirname, '../component') 
     },
   ],
   componentFileAffix: '.vue',
