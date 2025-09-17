@@ -1,0 +1,5 @@
+.tmagic
+dist
+playground/public/entry
+*.local
+*.local.*
