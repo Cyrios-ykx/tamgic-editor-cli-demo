@@ -6,6 +6,7 @@ export default [
   {
     name: 'text',
     text: '配置文案',
+    rules: [{ required: true, message: '请输入配置文案', trigger: 'blur' }],
   },
   {
     type: 'select',

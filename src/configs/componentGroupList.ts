@@ -31,6 +31,11 @@ export default [
         text: '迭代器容器',
         type: 'iterator-container',
       },
+    ],
+  },
+  {
+    title: '示例组件',
+    items: [
       {
         icon: Files,
         text: 'component',

@@ -1,15 +1,21 @@
 <!-- 复杂组件示例 -->
 <template>
-  <div>
-    <el-form-item label="title" label-width="100px" label-position="left">
-      <el-input placeholder="title" v-model="config" clearable></el-input>
+  <el-form
+    ref="ruleFormRef"
+    :model="ruleForm"
+    :rules="formRules"
+    label-width="100px"
+  >
+    <el-form-item :prop="props.name" :label="props.name">
+      <el-input :placeholder="props.name" v-model="config" clearable></el-input>
     </el-form-item>
-  </div>
+  </el-form>
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import type { IField } from './types';
+import type { FormInstance } from 'element-plus';
 
 const props = defineProps<IField>();
 const emit = defineEmits(['change']);
@@ -22,17 +28,19 @@ const config = computed({
   },
 });
 
-console.log('props');
-console.log(props);
-
-console.log('props.model');
-console.log(props.model);
-
-console.log('props.name');
-console.log(props.name);
-
 const onDataChange = (val: any) => {
   emit('change', val);
+};
+
+// form
+const ruleFormRef = ref<FormInstance>();
+const ruleForm = computed(() => {
+  return {
+    [props.name]: config.value,
+  };
+});
+const formRules = {
+  [props.name]: props.config?.baseConfig?.rules || [],
 };
 </script>
 
