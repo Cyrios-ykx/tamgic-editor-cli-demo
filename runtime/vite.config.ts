@@ -18,6 +18,7 @@ export default defineConfig({
         global: 'globalThis',
       },
     },
+    exclude: ['vue-demi'],
   },
 
   resolve: {
@@ -31,10 +32,6 @@ export default defineConfig({
   base: '/runtime/',
 
   publicDir: 'public',
-
-  optimizeDeps: {
-    exclude: ['vue-demi'],
-  },
 
   server: {
     host: '0.0.0.0',
