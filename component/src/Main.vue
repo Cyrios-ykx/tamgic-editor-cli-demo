@@ -1,5 +1,8 @@
 <template>
-  <div>123</div>
+  <div>
+    <div>{{ props.config.color }}</div>
+    <div>{{ props.config.text }}</div>
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -13,6 +16,9 @@ export interface ComponentSchema extends Omit<MComponent, 'id'> {
 }
 
 const props = defineProps<ComponentProps<ComponentSchema>>();
+
+console.log('props.config');
+console.log(props.config);
 
 useApp(props);
 </script>

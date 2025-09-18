@@ -20,7 +20,7 @@
   ],
 ```
 
-再按照本地调试步骤执行即可。如需使用，需要在m-editor的componentGroupList中也添加对应的组件
+再按照本地调试步骤执行即可，如果已经run dev，则刷新页面即可。如需使用，需要在m-editor的componentGroupList中也添加对应的组件
 
 ## 本地调试
 
