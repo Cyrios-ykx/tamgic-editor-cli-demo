@@ -9,6 +9,7 @@
     "build": "npm run clean:top && node --max_old_space_size=8192 node_modules/vite/bin/vite.js build",
     "serve": "vite preview",
     "runtime:dev": "npm --prefix runtime run dev",
+    "runtime:update": "npm --prefix runtime run update",
     "dev:all": "start cmd /k \"npm run dev\" && start cmd /k \"npm run runtime:dev\""
   },
   "dependencies": {

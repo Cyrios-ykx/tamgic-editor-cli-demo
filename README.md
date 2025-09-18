@@ -16,12 +16,12 @@ pnpm run dev:all
 
 # 开发
 
-更新组件中的 form-config 时，需要在/runtime 下执行 npm run tmagic 和 npm run build:libs，右侧面板（表单配置）才会显示对应 UI 的更新
+更新组件中的 form-config 时，需要在终端中执行 npm run runtime:update，右侧面板（表单配置）才会显示对应 UI 的更新
 
 # 规划
 
 - [x] editor 多个组件示例
-- [ ] editor 复杂组件示例
+- [x] editor 复杂组件示例
 - [ ] editor 组件联动示例
 - [ ] editor 组件校验
 - [ ] editor 保存配置

@@ -11,9 +11,11 @@ import MagicElementPlusAdapter from '@tmagic/element-plus-adapter';
 
 import App from './App.vue';
 import router from './route';
+import MFields from './m-fields';
 
 import 'element-plus/dist/index.css';
 import '@tmagic/editor/dist/style.css';
+import ElementPlus from 'element-plus';
 
 // @ts-ignore
 globalThis.MonacoEnvironment = {
@@ -38,5 +40,7 @@ monaco.languages.typescript.typescriptDefaults.setEagerModelSync(true);
 
 const app = createApp(App);
 app.use(router);
+app.use(ElementPlus);
 app.use(editorPlugin, MagicElementPlusAdapter);
+app.use(MFields);
 app.mount('#app');
