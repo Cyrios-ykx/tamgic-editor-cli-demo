@@ -1,3 +1,4 @@
+// https://element-plus.org/zh-CN/component/icon.html
 import {
   Files,
   FolderOpened,
@@ -6,6 +7,7 @@ import {
   SwitchButton,
   Ticket,
   Tickets,
+  Coffee,
 } from '@element-plus/icons-vue';
 
 import type { ComponentGroup } from '@tmagic/editor';
@@ -33,6 +35,11 @@ export default [
         icon: Files,
         text: 'component',
         type: 'component',
+      },
+      {
+        icon: Coffee,
+        text: 'head',
+        type: 'head',
       },
     ],
   },

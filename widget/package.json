@@ -1,0 +1,13 @@
+{
+  "name": "@cyrios/mie2-widget",
+  "version": "0.0.1",
+  "main": "index.js",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "cyrios",
+  "license": "ISC",
+  "description": ""
+}

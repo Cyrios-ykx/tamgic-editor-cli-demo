@@ -1,0 +1,23 @@
+{
+  "version": "0.0.1",
+  "name": "@cyrios/mie2-widget-head",
+  "type": "module",
+  "main": "src/index.ts",
+  "files": [
+    "src"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "peerDependencies": {
+    "@tmagic/core": ">=1.6.0",
+    "@tmagic/vue-runtime-help": ">=1.2.2",
+    "typescript": "*",
+    "vue": ">=3.5.0"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": true
+    }
+  }
+}
