@@ -5,7 +5,7 @@
 
 ## 如何新增组件？
 
-在/runtime同层级添加对应的/component模块，再在/runtime/tmagic.config.ts下的packages中添加对应的组件，比如：
+在/runtime 同层级添加对应的/component 模块，再在/runtime/tmagic.config.ts 下的 packages 中添加对应的组件，比如：
 
 ```
  packages: [
@@ -15,12 +15,12 @@
       'iterator-container': '@tmagic/vue-iterator-container',
       'page-fragment': '@tmagic/vue-page-fragment',
       'page-fragment-container': '@tmagic/vue-page-fragment-container',
-      component: path.resolve(__dirname, '../component') 
+      component: path.resolve(__dirname, '../component')
     },
   ],
 ```
 
-再按照本地调试步骤执行即可，如果已经run dev，则刷新页面即可。如需使用，需要在m-editor的componentGroupList中也添加对应的组件
+再按照本地调试步骤执行即可，如果已经 run dev，则刷新页面即可。如需使用，需要在 m-editor 的 componentGroupList 中也添加对应的组件
 
 ## 本地调试
 
@@ -29,6 +29,12 @@
 ```
 npm run tmagic
 npm run build:libs
+```
+
+or
+
+```
+npm run update
 ```
 
 然后启动 devserver

@@ -10,7 +10,8 @@
     "build": "node scripts/build.mjs --type=all --init",
     "build:libs": "node scripts/build.mjs --type=res",
     "build:page": "node scripts/build.mjs --type=page",
-    "build:playground": "node scripts/build.mjs --type=playground"
+    "build:playground": "node scripts/build.mjs --type=playground",
+    "update": "npm run tmagic && npm run build:libs"
   },
   "dependencies": {
     "@tmagic/core": "^1.6.0",
