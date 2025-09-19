@@ -26,7 +26,13 @@
       </template>
     </TMagicEditor>
 
-    <TMagicDialog v-model="previewVisible" destroy-on-close class="pre-viewer" title="预览" :width="stageRect?.width">
+    <TMagicDialog
+      v-model="previewVisible"
+      destroy-on-close
+      class="pre-viewer"
+      title="预览"
+      :width="stageRect?.width"
+    >
       <iframe
         v-if="previewVisible"
         ref="iframe"
@@ -40,9 +46,23 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, markRaw, nextTick, onBeforeUnmount, Ref, ref, toRaw } from 'vue';
+import {
+  computed,
+  markRaw,
+  nextTick,
+  onBeforeUnmount,
+  Ref,
+  ref,
+  toRaw,
+} from 'vue';
 import { useRouter } from 'vue-router';
-import { Coin, Connection, CopyDocument, Document, DocumentCopy } from '@element-plus/icons-vue';
+import {
+  Coin,
+  Connection,
+  CopyDocument,
+  Document,
+  DocumentCopy,
+} from '@element-plus/icons-vue';
 import { cloneDeep } from 'lodash-es';
 import serialize from 'serialize-javascript';
 
@@ -102,18 +122,26 @@ const stageRect = ref({
 });
 
 const previewUrl = computed(
-  () => `${VITE_RUNTIME_PATH}/page/index.html?localPreview=1&page=${editor.value?.editorService.get('page')?.id}`,
+  () =>
+    `${VITE_RUNTIME_PATH}/page/index.html?localPreview=1&page=${
+      editor.value?.editorService.get('page')?.id
+    }`
 );
 
 const collectorOptions = {
   id: '',
   name: '蒙层',
   isTarget: (key: string | number, value: any) =>
-    typeof key === 'string' && typeof value === 'string' && key.includes('events') && value.startsWith('overlay_'),
+    typeof key === 'string' &&
+    typeof value === 'string' &&
+    key.includes('events') &&
+    value.startsWith('overlay_'),
   isCollectByDefault: false,
 };
 
-const usePasteMenu = (menu?: Ref<InstanceType<typeof ContentMenu> | undefined>): MenuButton => ({
+const usePasteMenu = (
+  menu?: Ref<InstanceType<typeof ContentMenu> | undefined>
+): MenuButton => ({
   type: 'button',
   text: '粘贴(带关联信息)',
   icon: markRaw(DocumentCopy),
@@ -127,12 +155,19 @@ const usePasteMenu = (menu?: Ref<InstanceType<typeof ContentMenu> | undefined>):
       const rect = menu.value.$el.getBoundingClientRect();
       const parentRect = stage?.container?.getBoundingClientRect();
       const initialLeft =
-        calcValueByFontsize(stage?.renderer?.getDocument(), (rect.left || 0) - (parentRect?.left || 0)) /
-        services.uiService.get('zoom');
+        calcValueByFontsize(
+          stage?.renderer?.getDocument(),
+          (rect.left || 0) - (parentRect?.left || 0)
+        ) / services.uiService.get('zoom');
       const initialTop =
-        calcValueByFontsize(stage?.renderer?.getDocument(), (rect.top || 0) - (parentRect?.top || 0)) /
-        services.uiService.get('zoom');
-      services?.editorService?.paste({ left: initialLeft, top: initialTop }, collectorOptions);
+        calcValueByFontsize(
+          stage?.renderer?.getDocument(),
+          (rect.top || 0) - (parentRect?.top || 0)
+        ) / services.uiService.get('zoom');
+      services?.editorService?.paste(
+        { left: initialLeft, top: initialTop },
+        collectorOptions
+      );
     } else {
       services?.editorService?.paste({}, collectorOptions);
       services?.codeBlockService?.paste();
@@ -148,7 +183,11 @@ const contentMenuData = computed<MenuButton[]>(() => [
     icon: markRaw(CopyDocument),
     handler: (services: Services) => {
       const nodes = services?.editorService?.get('nodes');
-      nodes && services?.editorService?.copyWithRelated(cloneDeep(nodes), collectorOptions);
+      nodes &&
+        services?.editorService?.copyWithRelated(
+          cloneDeep(nodes),
+          collectorOptions
+        );
       nodes && services?.codeBlockService?.copyWithRelated(cloneDeep(nodes));
       nodes && services?.dataSourceService?.copyWithRelated(cloneDeep(nodes));
     },
@@ -165,21 +204,21 @@ const menu: MenuBarData = {
   ],
   center: ['delete', 'undo', 'redo', 'guides', 'rule', 'zoom'],
   right: [
-    {
-      type: 'button',
-      text: 'Form Playground',
-      handler: () => router.push('form'),
-    },
-    {
-      type: 'button',
-      text: 'Form Editor Playground',
-      handler: () => router.push('form-editor'),
-    },
-    {
-      type: 'button',
-      text: 'Table Playground',
-      handler: () => router.push('table'),
-    },
+    // {
+    //   type: 'button',
+    //   text: 'Form Playground',
+    //   handler: () => router.push('form'),
+    // },
+    // {
+    //   type: 'button',
+    //   text: 'Form Editor Playground',
+    //   handler: () => router.push('form-editor'),
+    // },
+    // {
+    //   type: 'button',
+    //   text: 'Table Playground',
+    //   handler: () => router.push('table'),
+    // },
     '/',
     {
       type: 'button',
@@ -188,11 +227,15 @@ const menu: MenuBarData = {
       handler: async (services) => {
         if (services?.editorService.get('modifiedNodeIds').size > 0) {
           try {
-            await tMagicMessageBox.confirm('有修改未保存，是否先保存再预览', '提示', {
-              confirmButtonText: '保存并预览',
-              cancelButtonText: '预览',
-              type: 'warning',
-            });
+            await tMagicMessageBox.confirm(
+              '有修改未保存，是否先保存再预览',
+              '提示',
+              {
+                confirmButtonText: '保存并预览',
+                cancelButtonText: '预览',
+                type: 'warning',
+              }
+            );
             save();
             tMagicMessage.success('保存成功');
           } catch (e) {
@@ -203,11 +246,16 @@ const menu: MenuBarData = {
 
         await nextTick();
 
-        if (!iframe.value?.contentWindow || !deviceGroup.value?.viewerDevice) return;
-        Object.defineProperty(iframe.value.contentWindow.navigator, 'userAgent', {
-          value: uaMap[deviceGroup.value.viewerDevice],
-          writable: true,
-        });
+        if (!iframe.value?.contentWindow || !deviceGroup.value?.viewerDevice)
+          return;
+        Object.defineProperty(
+          iframe.value.contentWindow.navigator,
+          'userAgent',
+          {
+            value: uaMap[deviceGroup.value.viewerDevice],
+            writable: true,
+          }
+        );
       },
     },
     {
@@ -224,12 +272,15 @@ const menu: MenuBarData = {
       type: 'button',
       icon: Document,
       tooltip: '源码',
-      handler: (service) => service?.uiService.set('showSrc', !service?.uiService.get('showSrc')),
+      handler: (service) =>
+        service?.uiService.set('showSrc', !service?.uiService.get('showSrc')),
     },
   ],
 };
 
-const moveableOptions = (config?: CustomizeMoveableOptionsCallbackConfig): MoveableOptions => {
+const moveableOptions = (
+  config?: CustomizeMoveableOptionsCallbackConfig
+): MoveableOptions => {
   const options: MoveableOptions = {};
 
   if (!editor.value) return options;
@@ -252,7 +303,11 @@ const moveableOptions = (config?: CustomizeMoveableOptionsCallbackConfig): Movea
   options.rotatable = !isPage;
 
   // 双击后在弹层中编辑时，根组件不能拖拽
-  if (config?.targetEl?.parentElement?.classList.contains('tmagic-editor-sub-stage-wrap')) {
+  if (
+    config?.targetEl?.parentElement?.classList.contains(
+      'tmagic-editor-sub-stage-wrap'
+    )
+  ) {
     options.draggable = false;
     options.resizable = false;
     options.rotatable = false;
@@ -267,7 +322,7 @@ const save = () => {
     serialize(toRaw(value.value), {
       space: 2,
       unsafe: true,
-    }).replace(/"(\w+)":\s/g, '$1: '),
+    }).replace(/"(\w+)":\s/g, '$1: ')
   );
   editor.value?.editorService.resetModifiedNodeId();
 };

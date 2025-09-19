@@ -1,15 +1,20 @@
 import { ActionType, type MApp, NodeType } from '@tmagic/core';
 
 const dsl: MApp = {
+  // --基础信息（应用根配置）--
   id: '1',
   name: 'test',
   type: NodeType.ROOT,
+  // --基础信息（应用根配置）--
+
   codeBlocks: {
+    //代码块唯一 ID
     code_5336: {
       name: 'getData',
       content: ({ app, params }) => {
         console.log('this is getData function', params, app);
       },
+      // 函数参数定义
       params: [
         {
           name: 'age',
@@ -31,13 +36,14 @@ const dsl: MApp = {
       params: [],
     },
   },
+  // items：页面配置（应用的页面集合）
   items: [
     {
       type: NodeType.PAGE,
       id: 'page_299',
       name: 'index',
       title: '',
-      layout: 'absolute',
+      layout: 'absolute', // 这个改成flow就可以实现拖拽排序了
       style: {
         position: 'relative',
         left: 0,
@@ -47,13 +53,14 @@ const dsl: MApp = {
         width: '100%',
         height: '1728',
         backgroundImage: '',
-        backgroundColor: 'rgba(248, 218, 218, 1)',
+        backgroundColor: 'skyblue',
         backgroundRepeat: 'no-repeat',
         backgroundSize: '100% 100%',
         color: '',
         fontSize: '',
         fontWeight: '',
       },
+      // 下面的events是页面的事件
       events: [
         {
           name: 'magic:common:events:click', // 事件名
@@ -78,6 +85,7 @@ const dsl: MApp = {
           ],
         },
       ],
+      // 页面创建时自动调用codeBlocks中code_5336和code_5316
       created: {
         hookType: 'code',
         hookData: [

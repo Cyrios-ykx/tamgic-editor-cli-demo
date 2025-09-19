@@ -24,8 +24,8 @@ pnpm run dev:all
 - [x] editor 复杂组件示例
 - [ ] editor 组件联动示例
 - [x] editor 组件校验
-- [ ] editor 保存配置
-- [ ] editor 组件可排序
+- [x] editor 保存配置
+- [x] editor 组件可排序
 
 # 支持我
 
