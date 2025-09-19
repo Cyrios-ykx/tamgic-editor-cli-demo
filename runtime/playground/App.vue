@@ -1,5 +1,5 @@
 <template>
-  playground
+  <!-- 这里是编辑时展示的效果页面 -->
   <component
     v-if="pageConfig"
     :is="pageComponent"

@@ -1,5 +1,5 @@
 <template>
-  page
+  <!-- 这里是预览时展示的效果页面 -->
   <component :is="pageComponent" :config="(pageConfig as MPage)"></component>
 </template>
 

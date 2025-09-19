@@ -94,11 +94,10 @@ const dsl: MApp = {
           },
         ],
       },
-      items: []
+      items: [],
     },
   ],
-  dataSources: [
-  ],
+  dataSources: [],
 };
 
 export default dsl;
