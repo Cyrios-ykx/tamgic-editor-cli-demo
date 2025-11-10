@@ -12,6 +12,8 @@ const args = minimist(process.argv.slice(2));
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 
+console.log('import.meta.url', import.meta.url)
+
 if (args.init) {
   fse.removeSync(path.resolve(dirname, '../.tmagic'));
 

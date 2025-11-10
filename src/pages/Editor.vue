@@ -96,6 +96,9 @@ import { uaMap } from '../const';
 
 const { VITE_RUNTIME_PATH, VITE_ENTRY_PATH } = import.meta.env;
 
+console.log('VITE_RUNTIME_PATH', VITE_RUNTIME_PATH)
+console.log('VITE_ENTRY_PATH', VITE_ENTRY_PATH)
+
 const datasourceList: DatasourceTypeOption[] = [];
 const runtimeUrl = `${VITE_RUNTIME_PATH}/playground/index.html`;
 const router = useRouter();

@@ -38,6 +38,7 @@ vueApp.use(request);
 
 const dsl = ((getUrlParam('localPreview') ? getLocalConfig() : window.magicDSL) || [])[0] || {};
 
+console.log('dsl value:', dsl); 
 const app = new TMagicApp({
   ua: window.navigator.userAgent,
   config: dsl,

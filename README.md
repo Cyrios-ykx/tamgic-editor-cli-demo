@@ -1,17 +1,28 @@
+# 环境准备
+
+pnpm 版本:
+node 版本:
+npm 版本:
+
 # 项目启动
 
 ```sh
-cd /runtime
+pnpm install
+
+cd \component
+pnpm install
+cd ..
+
+cd \runtime
 pnpm install
 pnpm run tmagic
 pnpm run build:libs
-pnpm run dev
+cd ..
 
-pnpm install
-pnpm run dev
-
-# 在都安装完依赖之后也可以运行以下命令，在新开的终端窗口来运行不同的服务
+# 在都安装完依赖之后也可以在根目录下运行以下命令，在2个新开的终端窗口中来运行不同的服务
 pnpm run dev:all
+
+# 在浏览器中访问 http://localhost:8098/
 ```
 
 # 开发
@@ -22,7 +33,7 @@ pnpm run dev:all
 
 - [x] editor 多个组件示例
 - [x] editor 复杂组件示例
-- [ ] editor 组件联动示例
+- [x] editor 组件联动示例
 - [x] editor 组件校验
 - [x] editor 保存配置
 - [x] editor 组件可排序
@@ -32,7 +43,3 @@ pnpm run dev:all
 ```sh
 pnpm why vue
 ```
-
-# 支持我
-
-如果对你有帮助的话，请点一下 star 吧~你的支持对我来说非常重要！！
