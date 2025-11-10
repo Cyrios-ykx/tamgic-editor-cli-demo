@@ -16,6 +16,7 @@ import MFields from './m-fields';
 import 'element-plus/dist/index.css';
 import '@tmagic/editor/dist/style.css';
 import ElementPlus from 'element-plus';
+import { showPerformance } from './performance';
 
 // @ts-ignore
 globalThis.MonacoEnvironment = {
@@ -37,6 +38,8 @@ globalThis.MonacoEnvironment = {
 };
 
 monaco.languages.typescript.typescriptDefaults.setEagerModelSync(true);
+
+showPerformance();
 
 const app = createApp(App);
 app.use(router);
