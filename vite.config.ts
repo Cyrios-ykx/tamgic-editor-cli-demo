@@ -45,16 +45,7 @@ export default defineConfig({
   build: {
     sourcemap: true,
     rollupOptions: {
-      input: 'src/main.ts',
-
-      output: {
-        // 输出文件路径（Vite 默认为 dist/assets，这里改为你要的 dist/bundle.js）
-        entryFileNames: 'bundle.js', // 入口文件输出名
-        dir: 'dist', // 输出目录
-        format: 'iife', // 模块格式（保持原配置的 IIFE，适用于浏览器）
-      },
-
-      // 3. 外部依赖声明（排除 xxx 不打包）
+      // 外部依赖声明（排除 xxx 不打包）
       external: [],
     },
   },
