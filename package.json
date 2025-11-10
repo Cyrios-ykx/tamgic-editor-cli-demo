@@ -10,7 +10,8 @@
     "serve": "vite preview",
     "runtime:dev": "npm --prefix runtime run dev",
     "runtime:update": "npm --prefix runtime run update",
-    "dev:all": "start cmd /k \"npm run dev\" && start cmd /k \"npm run runtime:dev\""
+    "dev:all": "start cmd /k \"npm run dev\" && start cmd /k \"npm run runtime:dev\"",
+    "check:deps": "depcheck"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.2",
@@ -33,6 +34,7 @@
     "@vitejs/plugin-vue": "^6.0.1",
     "@vue/compiler-sfc": "^3.5.20",
     "@vue/tsconfig": "^0.8.1",
+    "depcheck": "^1.4.7",
     "rimraf": "^6.1.0",
     "rollup-plugin-visualizer": "^6.0.5",
     "sass": "^1.91.0",

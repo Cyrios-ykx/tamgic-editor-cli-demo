@@ -27,6 +27,12 @@ pnpm run dev:all
 - [x] editor 保存配置
 - [x] editor 组件可排序
 
+# 减小打包体积
+
+```sh
+pnpm why vue
+```
+
 # 支持我
 
 如果对你有帮助的话，请点一下 star 吧~你的支持对我来说非常重要！！
