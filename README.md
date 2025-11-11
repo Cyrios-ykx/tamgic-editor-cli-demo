@@ -1,8 +1,10 @@
 # 环境准备
 
-pnpm 版本:
-node 版本:
-npm 版本:
+pnpm 版本: 8.15.7
+node 版本: v22.15.1
+npm 版本: 11.5.2
+
+晚点补充进package.json里
 
 # 项目启动
 
